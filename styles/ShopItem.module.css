@@ -1,0 +1,36 @@
+.shopItem_div {
+    display: flex;
+    max-width: 97vw;
+    margin: 2rem 1rem 2rem 1rem;
+    background-color: black;
+    height: 400px;
+    border-radius: 10px;
+    color: white;
+}
+
+.shopItem_img {
+    margin-top: 25px;
+}
+
+.shopItem_div_price {
+    margin-left: 75vw;
+    margin-top: 2vh;
+}
+.shopItem_price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.shopItem_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10vh;
+}
+
+.shopItem_name {
+    margin-left: 1.4rem;
+    margin-top: 1rem;
+    align-self: flex-start;
+    font-size: 18px;
+    text-transform: uppercase;
+}

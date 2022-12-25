@@ -6,6 +6,7 @@ import macbook from '../public/macbook.png'
 import ipad from '../public/ipad.png'
 import  iphone from '../public/iphone_14.png'
 
+
 export default function Home() {
   return (
      <>

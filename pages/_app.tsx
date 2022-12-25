@@ -3,6 +3,7 @@ import type {AppProps} from 'next/app'
 import {useState} from 'react'
 import {ThemeProvider} from 'styled-components'
 import {lightTheme, darkTheme, GlobalStyles} from '../utilts/ThemeConfig'
+import styles from '../styles/Header.module.css'
 
 export default function App({Component, pageProps}: AppProps) {
 
@@ -15,7 +16,7 @@ export default function App({Component, pageProps}: AppProps) {
 
   return <ThemeProvider theme={theme == 'dark' ? darkTheme : lightTheme}>
     <GlobalStyles/>
-    <button onClick={toggleTheme}>Switch Theme</button>
+    <button className={styles.switchbutton} onClick={toggleTheme}>Switch Theme</button>
     <Component {...pageProps} />
   </ThemeProvider>
 }

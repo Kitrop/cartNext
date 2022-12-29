@@ -5,12 +5,18 @@ import ShopItem from "../components/ShopItem";
 import macbook from '../public/macbook.png'
 import ipad from '../public/ipad.png'
 import  iphone from '../public/iphone_14.png'
+import {FC} from "react";
 
 
-export default function Home() {
+export interface IProps {
+    theme: string
+    setTheme:  any
+}
+
+const Home: FC<IProps> = ({theme, setTheme}) => {
   return (
      <>
-        <Header/>
+        <Header theme={theme} setTheme={setTheme}/>
         <main className={styles.main}>
           <ShopItem name={'macbook'} price={2000} img={macbook} width={280} height={200}/>
           <ShopItem name={'ipad'} price={2000} img={ipad} width={250} height={200}/>
@@ -21,5 +27,5 @@ export default function Home() {
   )
 }
 
-
+export default Home;
 

@@ -1,18 +1,33 @@
 import styles from '../styles/Header.module.css'
-import {useTheme} from "next-themes";
-import {useEffect, useState} from "react";
+import {Dispatch, FC, SetStateAction} from "react";
+import {IProps} from "../pages";
 
 
-const Header = () => {
 
-  return (
-       <header className={styles.header}>
-         <div className={'pt-6 ml-4 text-left'}>SHOP NEXT</div>
-         <div className={'text-right'}>
-           <span className={'mr-5'}>theme</span>
-         </div>
-       </header>
-  )
+const Header: FC<IProps> = ({theme, setTheme}) => {
+
+    const toggleTheme = () => {
+        theme == 'dark' ? setTheme('light') : setTheme('dark')
+    }
+    return (
+        <header className={styles.header}>
+            <nav className="navbar navbar-expand-lg shadow-md py-2 relative flex items-center w-full justify-between">
+                <div>
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <span>NEXT SHOP</span>
+                        </li>
+                        <li className="nav-item">
+                            <button className={styles.switchbutton} onClick={toggleTheme}>Switch Theme</button>
+                        </li>
+                        <li className="nav-item">
+                            CART
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    )
 }
 
 export default Header;

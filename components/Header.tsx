@@ -1,33 +1,31 @@
 import styles from '../styles/Header.module.css'
-import {Dispatch, FC, SetStateAction} from "react";
+import {FC, useState} from "react";
 import {IProps} from "../pages";
-
+import {CartIcon, MoonLight, SunLight} from "./Icons";
 
 
 const Header: FC<IProps> = ({theme, setTheme}) => {
 
-    const toggleTheme = () => {
-        theme == 'dark' ? setTheme('light') : setTheme('dark')
-    }
-    return (
-        <header className={styles.header}>
-            <nav className="navbar navbar-expand-lg shadow-md py-2 relative flex items-center w-full justify-between">
-                <div>
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <span>NEXT SHOP</span>
-                        </li>
-                        <li className="nav-item">
-                            <button className={styles.switchbutton} onClick={toggleTheme}>Switch Theme</button>
-                        </li>
-                        <li className="nav-item">
-                            CART
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-    )
+  let [cartStatus, setCartStatus] = useState(false)
+
+  const toggleTheme = () => {
+    theme == 'dark' ? setTheme('light') : setTheme('dark')
+  }
+
+  return (
+      <header className={styles.header}>
+        <div className={styles.header_i}>
+          <h1>NEXT SHOP</h1>
+        </div>
+        <nav className={styles.header_navigation}>
+          <ul className={styles.nav}>
+            <li onClick={toggleTheme} >{theme === 'dark' ? <SunLight/> : <MoonLight/>} </li>
+            <li onClick={() => setCartStatus(!cartStatus)}> <CartIcon/> </li>
+          </ul>
+        </nav>
+        {cartStatus ? <div className={styles.shopcart_main}> open </div> : null}
+      </header>
+  )
 }
 
 export default Header;

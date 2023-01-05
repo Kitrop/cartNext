@@ -11,7 +11,7 @@
 }
 
 .shopItem_div_price {
-    margin-left: 75vw;
+    margin-left: 50vw;
     margin-top: 2vh;
 }
 .shopItem_price {
@@ -23,6 +23,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 10vh;
+    cursor: pointer;
 }
 
 .shopItem_name {

@@ -1,8 +1,13 @@
 import Image, { StaticImageData } from "next/image";
 import styles from '../styles/ShopItem.module.css'
 import {FC} from "react";
+import {PlusDark, PlusLight} from "./Icons";
+import {IOrder} from "../pages";
 
-const ShopItem:FC<IPros> = ({name, price, img, width, height}) => {
+const ShopItem:FC<IPros> = ({name, price, img, width, height, theme, addItemOrder}) => {
+
+
+
   return (
      <div>
        <div className={styles.shopItem_div}>
@@ -12,7 +17,7 @@ const ShopItem:FC<IPros> = ({name, price, img, width, height}) => {
          </div>
          <div className={styles.shopItem_div_price}>
            <div className={styles.shopItem_price}>{price}$</div>
-           <button className={styles.shopItem_button}>Add</button>
+           <div onClick={() => addItemOrder({name, price, img})} className={styles.shopItem_button}> {theme === 'dark' ? <PlusLight /> : <PlusDark />} </div>
          </div>
        </div>
      </div>
@@ -27,6 +32,8 @@ interface IPros {
   price: number
   height: number
   width: number
+  theme: string
+  addItemOrder: (item: IOrder) => void
 }
 
 export default ShopItem

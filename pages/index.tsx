@@ -4,28 +4,65 @@ import styles from '../styles/Home.module.css'
 import ShopItem from "../components/ShopItem";
 import macbook from '../public/macbook.png'
 import ipad from '../public/ipad.png'
-import  iphone from '../public/iphone_14.png'
-import {FC} from "react";
+import iphone from '../public/iphone_14.png'
+import {FC, useEffect} from "react";
+import {StaticImageData} from "next/image";
 
 
-export interface IProps {
-    theme: string
-    setTheme:  any
-}
+
 
 const Home: FC<IProps> = ({theme, setTheme}) => {
+
+  const shopItems: IShopItems[] = [
+    {id: 1, name: 'macbook', price: 2000, img: macbook, width: 280, height: 200},
+    {id: 2, name: 'ipad', price: 1500, img: ipad, width: 250, height: 200},
+    {id: 3, name: 'macbook', price: 1000, img: iphone, width: 250, height: 250},
+  ]
+
+
+
+  let order: IOrder[] = []
+
+  const addItemOrder = (item: IOrder) => {
+    order = [...order, item]
+    console.log(order)
+  }
+  useEffect(() => {
+    console.log(order)
+  }, [order])
+
+
   return (
-     <>
+      <>
         <Header theme={theme} setTheme={setTheme}/>
         <main className={styles.main}>
-          <ShopItem name={'macbook'} price={2000} img={macbook} width={280} height={200}/>
-          <ShopItem name={'ipad'} price={2000} img={ipad} width={250} height={200}/>
-          <ShopItem name={'iphone'} price={2000} img={iphone} width={250} height={250}/>
+          {shopItems.map(m => <ShopItem key={m.id} img={m.img} name={m.name} price={m.price} height={m.height}
+                                        width={m.width} theme={theme} addItemOrder={addItemOrder} />)}
         </main>
         <Footer/>
-     </>
+      </>
   )
 }
 
 export default Home;
 
+
+export interface IProps {
+  theme: string
+  setTheme: any
+}
+
+interface IShopItems {
+  id: number,
+  name: string
+  price: number,
+  img: string | StaticImageData,
+  width: number,
+  height: number
+}
+
+export interface IOrder {
+  name: string,
+  price: number,
+  img: string | StaticImageData
+}

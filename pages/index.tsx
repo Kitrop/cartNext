@@ -22,19 +22,17 @@ const Home: FC<IProps> = ({theme, setTheme}) => {
 
 
   let order: IOrder[] = []
-
   const addItemOrder = (item: IOrder) => {
     order = [...order, item]
     console.log(order)
   }
-  useEffect(() => {
-    console.log(order)
-  }, [order])
+
+
 
 
   return (
       <>
-        <Header theme={theme} setTheme={setTheme}/>
+        <Header theme={theme} setTheme={setTheme} order={order}/>
         <main className={styles.main}>
           {shopItems.map(m => <ShopItem key={m.id} img={m.img} name={m.name} price={m.price} height={m.height}
                                         width={m.width} theme={theme} addItemOrder={addItemOrder} />)}

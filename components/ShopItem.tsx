@@ -8,6 +8,7 @@ const ShopItem:FC<IPros> = ({name, price, img, width, height, theme, addItemOrde
 
 
 
+
   return (
      <div>
        <div className={styles.shopItem_div}>

@@ -1,10 +1,11 @@
 import styles from '../styles/Header.module.css'
 import {FC, useState} from "react";
-import {IProps} from "../pages";
 import {CartIcon, MoonLight, SunLight} from "./Icons";
+import Cart from "./Cart";
+import {IOrder} from "../pages";
 
 
-const Header: FC<IProps> = ({theme, setTheme}) => {
+const Header: FC<IProps> = ({theme, setTheme, order}) => {
 
   let [cartStatus, setCartStatus] = useState(false)
 
@@ -23,9 +24,15 @@ const Header: FC<IProps> = ({theme, setTheme}) => {
             <li onClick={() => setCartStatus(!cartStatus)}> <CartIcon/> </li>
           </ul>
         </nav>
-        {cartStatus ? <div className={styles.shopcart_main}> open </div> : null}
+        {cartStatus ? <Cart order={order}/>  : null}
       </header>
   )
+}
+
+interface IProps {
+  theme: string
+  setTheme: any
+  order: IOrder[]
 }
 
 export default Header;

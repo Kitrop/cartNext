@@ -5,10 +5,8 @@ import ShopItem from "../components/ShopItem";
 import macbook from '../public/macbook.png'
 import ipad from '../public/ipad.png'
 import iphone from '../public/iphone_14.png'
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import {StaticImageData} from "next/image";
-
-
 
 
 const Home: FC<IProps> = ({theme, setTheme}) => {
@@ -18,7 +16,7 @@ const Home: FC<IProps> = ({theme, setTheme}) => {
   const shopItems: IShopItems[] = [
     {id: 1, name: 'macbook', price: 2000, img: macbook, width: 280, height: 200},
     {id: 2, name: 'ipad', price: 1500, img: ipad, width: 250, height: 200},
-    {id: 3, name: 'macbook', price: 1000, img: iphone, width: 250, height: 250},
+    {id: 3, name: 'iphone', price: 1000, img: iphone, width: 250, height: 250},
   ]
 
   // State order

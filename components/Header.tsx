@@ -24,7 +24,7 @@ const Header: FC<IProps> = ({theme, setTheme, order}) => {
             <li onClick={() => setCartStatus(!cartStatus)}> <CartIcon/> </li>
           </ul>
         </nav>
-        {cartStatus ? <Cart order={order} theme={theme}/>  : null}
+        {cartStatus ? <Cart order={order} theme={theme} setCartStatus={setCartStatus}/>  : null}
       </header>
   )
 }

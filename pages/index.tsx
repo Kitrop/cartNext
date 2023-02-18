@@ -30,7 +30,7 @@ const Home: FC<IProps> = ({theme, setTheme}) => {
           {shopItems.map(m => <ShopItem key={m.id} img={m.img} name={m.name} price={m.price} height={m.height}
                                         width={m.width} theme={theme} setOrder={setOrder} order={order} />)}
         </main>
-        <Footer/>
+        <Footer theme={theme}/>
       </>
   )
 }

@@ -8,8 +8,8 @@ import {CrossBlackIcon, CrossWhiteIcon} from "./Icons";
 const Cart: FC<IProps> = ({order, theme, setCartStatus}) => {
 
   const Modal = styled.div `
-    color: ${props => ( theme === 'dark' ? 'black' : 'white')};
-    background-color: ${props => (theme === 'dark' ? '#fff' : '#000000FF')};
+    color: ${props => ( theme === 'dark' ? 'white' : 'black')};
+    background-color: ${props => (theme === 'dark' ? '#000000FF' : '#fff')};
     position: fixed;
     box-shadow: ${props => (theme === 'dark' ? '0px 0px 26px 8px rgba(255, 255, 255, 0.2);' : '0px 0px 26px 8px rgba(0, 0, 0, 0.2)')};
     width: 98%;
@@ -20,14 +20,47 @@ const Cart: FC<IProps> = ({order, theme, setCartStatus}) => {
     padding: 20px 30px;
   `
 
+  let macbookCount = 0
+  let ipadCount = 0
+  let iphoneCount = 0
+
+  order.map(i => {
+    if (i.name === 'macbook') {
+      macbookCount += 1
+    }
+    else if (i.name === 'iphone') {
+      iphoneCount += 1
+    }
+    else if (i.name === 'ipad') {
+      ipadCount += 1
+    }
+  })
+
+  let iphoneTotalPrIce = iphoneCount * 1000
+  let macbookTotalPrIce = macbookCount * 2000
+  let ipadTotalPrIce = ipadCount * 1500
 
   return (
       <Modal>
-        <span className={styles.cross} onClick={() => setCartStatus(false)}> { theme === 'dark' ?  <CrossBlackIcon/> :  <CrossWhiteIcon/>} </span>
-        {order.map(i => <div key={uuidv4()}>
-          <span> { i.name } </span>
-          <span> { i.price } </span>
-        </div>)}
+        <span className={styles.cross} onClick={() => setCartStatus(false)}> { theme === 'dark' ?  <CrossWhiteIcon/> :  <CrossBlackIcon/>} </span>
+        { iphoneCount > 0 ? <div className={styles.infoAboutItem}>
+          <span className={styles.infoAboutItem_span}>iphone</span>
+          <span className={styles.infoAboutItem_span}> {iphoneCount} </span>
+          <span className={styles.infoAboutItem_span}> {iphoneTotalPrIce}$ </span>
+        </div> : null }
+        { ipadCount > 0 ? <div className={styles.infoAboutItem}>
+          <span className={styles.infoAboutItem_span}>ipad</span>
+          <span className={styles.infoAboutItem_span}> {ipadCount} </span>
+          <span className={styles.infoAboutItem_span}>{macbookTotalPrIce}$ </span>
+        </div> : null }
+        { ipadCount > 0 ? <div className={styles.infoAboutItem}>
+          <span className={styles.infoAboutItem_span}>macbook</span>
+          <span className={styles.infoAboutItem_span}> {macbookCount} </span>
+          <span className={styles.infoAboutItem_span}> {ipadTotalPrIce}$ </span>
+        </div> : null }
+        <div>
+          <span className={styles.totalPrice}>total amount: {iphoneTotalPrIce + macbookTotalPrIce + ipadTotalPrIce}$</span>
+        </div>
       </Modal>
   )
 }

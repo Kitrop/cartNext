@@ -1,12 +1,19 @@
 .footer {
     width: 100%;
     min-height: 12vh;
-    /*max-height: 15vh;*/
     background-color: #111111;
     padding: .5em 1em;
     color: white;
     flex-shrink: 0;
     justify-content: space-between;
+}
+
+.footer_info {
+    display: flex;
+}
+
+.footer_info li{
+    align-self: center;
 }
 
 .footer_info ul,
@@ -18,4 +25,8 @@
 .footer_info li {
     display: inline-block;
     margin: 1.4em 1em 1em 1em;
+}
+
+.copyright {
+    font-size: 1.25rem;
 }
